@@ -1,0 +1,54 @@
+This Application is an example of how OAuth can we consumed using Play Framework's WS web-client.
+
+In this example we are exploring QuickBooks APIs which are protected by OAuth 1.0 authorization Flow.
+
+QuickBooks is an accounting software package developed and marketed by Intuit. QuickBooks products are geared mainly
+toward small and medium-sized businesses and offer on-premises accounting applications as well as cloud based versions
+that accept business payments, manage and pay bills, and payroll functions.
+
+Here we are exploring the Online version of the same.
+(visit :: https://quickbooks.intuit.com/)
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+In order to use this application you must:-
+* Have a QuickBooks Developers Account. (visit :: https://developer.intuit.com/)
+* Create an App under your Account.
+
+After creating the App you can go to OAuth Playground to manually get your accessToken and secret.
+
+You can also explore the QuickBooks APIs.
+(visit :: https://developer.intuit.com/v2/apiexplorer?apiname=V3QBO)
+You can also explore the SandBox Account.
+(visit :: https://developer.intuit.com/v2/ui#/sandbox)
+
+
+For more Information about QuickBooks and OAuth 1.0 workFlow you can visit :
+https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/000500_authentication_and_authorization/connect_from_within_your_app
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+In this application we are creating two REST endpoints:
+GET     /qb                            controllers.HomeController.getDataFromQB()
+GET     /auth                          controllers.HomeController.auth()
+
+These endpoints are defined in conf/routes file.
+
+
+The /auth endpoint takes you to the login screen of QuickBooks online as for authorization and for providing grant to
+ the application.
+
+The /qb endpoint hits the Invoice endpoint of Quickbooks and gets the list of invoices from the logged in account.
+
+
+For keeping this Application simple I have created only one controller class and doing all the logic and operations
+in the same class. You can (should as well) separate different functionality in different classes if you are developing
+some application.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+After cloning the Application and resolving the dependencies using SBT.
+Run the application using "run -Dhttp.port=9001" or simply "run" command. (Default port is 9000)
+
+hit "localhost:9000/qb"
