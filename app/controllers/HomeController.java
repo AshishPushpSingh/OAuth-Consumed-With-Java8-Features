@@ -20,10 +20,11 @@ public class HomeController extends Controller {
     /*
     Consumer-Key and Consumer-Secret is obtained from the app which we have created in QuickBooks.
     For more information and exploration you can go to "https://developer.intuit.com/"
+    Use your own Keys. ;)
     */
     static final OAuth.ConsumerKey KEY = new OAuth.ConsumerKey(
-            "qyprdvsO30Bw5B9uy1F9vahzmnJJ9y",
-            "QwRs4IIHsm1W5TlWL0w7HD50QLLRBFpisKrNeYvb");
+            "qyprdvsO30Bw5B9uy1F9vahxxxxxxx",
+            "QwRs4IIHsm1W5TlWL0w7HD50QLLRBFpisxxxxxxx");
     /*
     The Request token URL, Access token URL and Authorization URL for QuickBooks Online are available at
     "https://developer.intuit.com/docs/0100_quickbooks_online/0100_essentials/000500_authentication_and_authorization
