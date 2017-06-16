@@ -2,6 +2,7 @@ package controllers;
 
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
+import play.Logger;
 import play.libs.oauth.OAuth;
 import play.libs.oauth.OAuth.RequestToken;
 import play.libs.ws.WSClient;
@@ -73,6 +74,8 @@ public class HomeController extends Controller {
                 // Check that the response was successful
                 if (status == HttpURLConnection.HTTP_OK || status == HttpURLConnection.HTTP_CREATED) {
                     String body = response.getBody();
+                    //Using Play Framework's Logger Class. No need to Log4j. Cheers!!!
+                    Logger.info("List of Invoices From QB ::: {}", body);
                     // Get the content type
                     return ok(
                             body +
@@ -92,6 +95,7 @@ public class HomeController extends Controller {
 
         String verifier = request().getQueryString("oauth_verifier");
         realmId = request().getQueryString("realmId");
+        Logger.info("REALM ID ::: {}", realmId);
         if (Strings.isNullOrEmpty(verifier)) {
             String url = routes.HomeController.auth().absoluteURL(request());
             RequestToken requestToken = QB.retrieveRequestToken(url);
@@ -108,6 +112,8 @@ public class HomeController extends Controller {
     private void saveTokenPair(RequestToken requestToken) {
         session("token", requestToken.token);
         session("secret", requestToken.secret);
+        Logger.info("Token ::: {}", requestToken.token );
+        Logger.info("Secret ::: {}", requestToken.secret);
         this.token = requestToken.token;
         this.secret = requestToken.secret;
 
